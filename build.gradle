@@ -1,0 +1,61 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+apply plugin: 'groovy'
+apply plugin: "maven-publish"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    compile 'org.codenarc:CodeNarc:0.27.0'
+    compile 'org.codehaus.groovy:groovy-all:2.4.10'
+
+    testCompile 'junit:junit:4.12'
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {  // Artifacts to publish
+            from components.java
+            artifact sourceJar
+
+            groupId 'nine'
+            artifactId 'codenarc-extra'
+            version '1.0.1.RC1'
+        }
+    }
+}
+
+bintray {
+    user = System.getenv("BINTRAY_USER") ?: project.bintrayUser
+    key = System.getenv("BINTRAY_KEY") ?: project.bintrayKey
+
+    publications = ['mavenJava']
+
+    pkg {
+        repo = 'maven'
+        name = 'codenarc-extra'
+        desc = 'Extra codenarc rules'
+        licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
+
+        githubRepo = "snimavat/codenarc-extra"
+        githubReleaseNotesFile = 'README.md'
+        vcsUrl = 'https://github.com/snimavat/codenarc-extra'
+        issueTrackerUrl = 'https://github.com/snimavat/codenarc-extra/issues'
+
+    }
+
+    override = rootProject.version.endsWith("SNAPSHOT")
+}
