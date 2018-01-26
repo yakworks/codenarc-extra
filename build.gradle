@@ -30,7 +30,7 @@ publishing {
             from components.java
             artifact sourceJar
 
-            groupId 'nine'
+            groupId 'io.9ci.yakworks'
             artifactId 'codenarc-extra'
             version '1.0.1.RC1'
         }
@@ -50,10 +50,10 @@ bintray {
         licenses = ['Apache-2.0']
         publicDownloadNumbers = true
 
-        githubRepo = "snimavat/codenarc-extra"
+        githubRepo = "yakworks/codenarc-extra"
         githubReleaseNotesFile = 'README.md'
-        vcsUrl = 'https://github.com/snimavat/codenarc-extra'
-        issueTrackerUrl = 'https://github.com/snimavat/codenarc-extra/issues'
+        vcsUrl = 'https://github.com/yakworks/codenarc-extra'
+        issueTrackerUrl = 'https://github.com/yakworks/codenarc-extra/issues'
 
     }
 

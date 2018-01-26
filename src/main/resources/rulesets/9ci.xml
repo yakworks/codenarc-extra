@@ -3,5 +3,5 @@
          xsi:schemaLocation="http://codenarc.org/ruleset/1.0 http://codenarc.org/ruleset-schema.xsd"
          xsi:noNamespaceSchemaLocation="http://codenarc.org/ruleset-schema.xsd">
     <description>Extra Grails rules</description>
-    <rule class='org.codenarc.rule.groovy.CompileStaticRule'/>
+    <rule class='io.nineci.yakworks.codenarck.CompileStaticRule'/>
 </ruleset>

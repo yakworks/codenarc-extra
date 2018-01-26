@@ -1,7 +1,6 @@
-package org.codenarc.rule.groovy
+package io.nineci.yakworks.codenarck
 
 import groovy.transform.CompileStatic
-import org.codehaus.groovy.ast.AnnotatedNode
 import org.codehaus.groovy.ast.AnnotationNode
 import org.codehaus.groovy.ast.ClassNode
 import org.codenarc.rule.AbstractAstVisitor

@@ -1,4 +1,4 @@
-package org.codenarc.rule.groovy
+package io.nineci.yakworks.codenarck
 
 import org.codenarc.rule.AbstractRuleTestCase
 import org.codenarc.rule.Rule
