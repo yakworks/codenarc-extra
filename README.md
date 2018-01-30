@@ -35,10 +35,8 @@ That should make the codenarc-extra rules apply.
 Rules included in this package
 ----
 
-CompileStaticRule
---
 
-- This rule ensures that all groovy classes are annotated with one of the @CompileStatic, @CompileDynamic or @GrailsCompileStatic
+- **CompileStaticRule** This rule ensures that all groovy classes are annotated with one of the @CompileStatic, @CompileDynamic or @GrailsCompileStatic
 
 
 
