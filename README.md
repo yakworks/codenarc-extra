@@ -11,7 +11,7 @@ Add dependency to codenarc extra in build.gradle
 ```groovy
 
 repositories {
-    maven { url = "https://dl.bintray.com/9ci/maven" }
+    jcenter()
 }
 
 
