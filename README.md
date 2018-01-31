@@ -26,7 +26,7 @@ Add codenarc ruleset in rules.groovy file as shown below.
 
 ```groovy
 ruleset {
-    ruleset('rulesets/grails-extra.xml')
+    ruleset('rulesets/codenarc-extra.xml')
 }
 ```
 
