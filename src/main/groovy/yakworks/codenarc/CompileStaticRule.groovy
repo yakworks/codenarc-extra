@@ -18,18 +18,15 @@ class GrailsTransactionalVisitor extends AbstractAstVisitor {
     private static final String COMPILE_STATIC = "CompileStatic"
     private static final String COMPILE_DYNAMIC = "CompileDynamic"
 
-    private static final String ERROR_MSG = 'Class should be marked with one of @GrailsCompileStatic, @CompileStatic or @CompileDynamic'
+    private static
+    final String ERROR_MSG = 'Class should be marked with one of @GrailsCompileStatic, @CompileStatic or @CompileDynamic'
 
 
     @Override
     void visitClassEx(ClassNode classNode) {
         boolean isExplicitlyMarked = false
 
-        if(classNode.isInterface()) {
-            super.visitClassEx(classNode)
-        }
-
-        else {
+        if (!classNode.isInterface()) {
             for (AnnotationNode annotationNode : classNode.annotations) {
                 String annotation = annotationNode.classNode.text
                 if (annotation in [GRAILS_COMPILE_STATIC, COMPILE_STATIC, COMPILE_DYNAMIC]) {
@@ -40,9 +37,10 @@ class GrailsTransactionalVisitor extends AbstractAstVisitor {
             if (!isExplicitlyMarked) {
                 addViolation(classNode, ERROR_MSG)
             }
-
-            super.visitClassEx(classNode)
         }
+
+        super.visitClassEx(classNode)
+
     }
 
 }
