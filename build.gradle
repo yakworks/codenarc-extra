@@ -57,6 +57,5 @@ bintray {
         githubReleaseNotesFile = 'README.md'
         vcsUrl = 'https://github.com/yakworks/codenarc-extra'
         issueTrackerUrl = 'https://github.com/yakworks/codenarc-extra/issues'
-
     }
 }
