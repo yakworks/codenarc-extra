@@ -53,6 +53,10 @@ bintray {
         licenses = ['Apache-2.0']
         publicDownloadNumbers = true
 
+        version {
+            name = '1.0.1'
+        }
+
         githubRepo = "yakworks/codenarc-extra"
         githubReleaseNotesFile = 'README.md'
         vcsUrl = 'https://github.com/yakworks/codenarc-extra'
