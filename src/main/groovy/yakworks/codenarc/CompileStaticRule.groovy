@@ -1,4 +1,4 @@
-package io.nineci.yakworks.codenarck
+package yakworks.codenarc
 
 import groovy.transform.CompileStatic
 import org.codehaus.groovy.ast.AnnotationNode
@@ -25,18 +25,24 @@ class GrailsTransactionalVisitor extends AbstractAstVisitor {
     void visitClassEx(ClassNode classNode) {
         boolean isExplicitlyMarked = false
 
-        for(AnnotationNode annotationNode: classNode.annotations) {
-            String annotation = annotationNode.classNode.text
-            if (annotation in [GRAILS_COMPILE_STATIC, COMPILE_STATIC, COMPILE_DYNAMIC]) {
-               isExplicitlyMarked = true
+        if(classNode.isInterface()) {
+            super.visitClassEx(classNode)
+        }
+
+        else {
+            for (AnnotationNode annotationNode : classNode.annotations) {
+                String annotation = annotationNode.classNode.text
+                if (annotation in [GRAILS_COMPILE_STATIC, COMPILE_STATIC, COMPILE_DYNAMIC]) {
+                    isExplicitlyMarked = true
+                }
             }
-        }
 
-        if(!isExplicitlyMarked) {
-            addViolation(classNode, ERROR_MSG)
-        }
+            if (!isExplicitlyMarked) {
+                addViolation(classNode, ERROR_MSG)
+            }
 
-        super.visitClassEx(classNode)
+            super.visitClassEx(classNode)
+        }
     }
 
 }

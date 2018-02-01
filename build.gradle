@@ -30,9 +30,9 @@ publishing {
             from components.java
             artifact sourceJar
 
-            groupId 'io.9ci.yakworks'
+            groupId 'yakworks'
             artifactId 'codenarc-extra'
-            version '1.0.1.RC2'
+            version '1.0.1.RC3'
         }
     }
 }

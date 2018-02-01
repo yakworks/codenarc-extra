@@ -1,4 +1,4 @@
-package io.nineci.yakworks.codenarck
+package yakworks.codenarc
 
 import org.codenarc.rule.AbstractRuleTestCase
 import org.codenarc.rule.Rule
@@ -67,6 +67,16 @@ class CompileStaticRuleTest extends AbstractRuleTestCase {
             }
          """
 
+        assertNoViolations(source)
+    }
+
+    @Test
+    void "test interface is not checked"() {
+        final source = """
+            interface Test {
+            
+            }
+         """
         assertNoViolations(source)
     }
 }
