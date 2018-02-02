@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yakworks/codenarc-extra.svg?branch=master)](https://travis-ci.org/yakworks/codenarc-extra)
+
 Codenarc Extra.
 ----
 
