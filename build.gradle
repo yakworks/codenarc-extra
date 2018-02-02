@@ -32,7 +32,7 @@ publishing {
 
             groupId 'io.9ci.yakworks'
             artifactId 'codenarc-extra'
-            version '1.0.1'
+            version '1.0.2'
         }
     }
 }
@@ -54,7 +54,7 @@ bintray {
         publicDownloadNumbers = true
 
         version {
-            name = '1.0.1'
+            name = '1.0.2'
         }
 
         githubRepo = "yakworks/codenarc-extra"
