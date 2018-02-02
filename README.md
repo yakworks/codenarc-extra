@@ -16,7 +16,7 @@ repositories {
 
 
 dependencies {
- codenarc "yakworks:codenarc-extra:1.0.1.RC3"
+ codenarc "io.9ci.yakworks:codenarc-extra:1.0.1"
 }
 
 
