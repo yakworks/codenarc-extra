@@ -79,4 +79,20 @@ class CompileStaticRuleTest extends AbstractRuleTestCase {
          """
         assertNoViolations(source)
     }
+
+    @Test
+    void "test inner classes is not checked"() {
+        final source = """
+            import groovy.transform.CompileDynamic
+            
+            @CompileDynamic
+            class Test {
+            
+                class AnInnerClass {
+                
+                }
+            }
+         """
+        assertNoViolations(source)
+    }
 }

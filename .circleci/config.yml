@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # docker image with python and mkdocs on it already as well, based on gradle:4.6-alpine
+      - image: dock9/gradle:4.6
+
+    environment:
+      # Customize the JVM maximum heap limit
+      # JVM_OPTS: -Xmx3200m
+      MALLOC_ARENA_MAX: 2
+      GRADLE_OPTS: "-Xmx3200m -Dorg.gradle.daemon=false" #daemon false doesn't seem to get picked up by fork
+      TERM: dumb
+
+    parallelism: 1
+    # resource_class: large
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v3-gradle-{{ checksum "build.gradle" }}
+
+      # see https://github.com/palantir/gradle-configuration-resolver-plugin
+      - run: ./gradlew resolveConfigurations
+      #- run: ./gradlew test-app:dependencies
+
+      - save_cache:
+          paths:
+            - /home/gradle # the https://hub.docker.com/_/gradle/ containter does wierd stuff for cache
+            - ~/.m2
+            - ~/.gradle
+          key: v3-gradle-{{ checksum "build.gradle" }}
+
+      - run: ./gradlew --no-daemon check --stacktrace
+
+      - store_artifacts:
+          path: build/reports/tests/test/
+          destination: test-reports/unit/
+
+      - store_test_results:
+          path: build/test-results
+
+       - run: ./.circleci/publish.sh
